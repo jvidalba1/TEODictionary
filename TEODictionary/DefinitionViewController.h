@@ -11,18 +11,16 @@
 
 @interface DefinitionViewController : UIViewController<UIWebViewDelegate, WordsTableViewControllerDelegate, UISplitViewControllerDelegate>
 
-// Los IBOutlets, es decir aquellas vistas que hemos definido en el
-// interface builder (el xib)
+# pragma mark - propiedades
+
 @property (strong) IBOutlet UIWebView *browser;
 @property (strong) IBOutlet UIActivityIndicatorView *activityView;
 
-// El modelo es simplemente una palabra
 @property (copy) NSString *wordModel;
 
-// Lo inicializamos pasándole el modelo
--(id) initWithModel:(NSString *) aModel;
+# pragma mark - metodos
 
-// Método que crea la NSURLRequest para la definicón de una palabra
+-(id) initWithModel:(NSString *) aModel;
 -(NSURLRequest *) definitionRequestForWord: (NSString *) aWord;
 
 @end

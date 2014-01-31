@@ -9,10 +9,6 @@
 #import "DefinitionViewController.h"
 #import "WordsTableViewController.h"
 
-@interface DefinitionViewController ()
-
-@end
-
 @implementation DefinitionViewController
 
 
@@ -27,10 +23,12 @@
     return self;
 }
 
+/*
+ * A partir de la palabra obtiene la NSURLRequest de la definición de la web site
+ */
 -(NSURLRequest *) definitionRequestForWord: (NSString *) aWord
 {
-    NSURL *url = [NSURL URLWithString:
-                  [NSString stringWithFormat:@"http://www.merriam-webster.com/dictionary/%@", aWord]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.merriam-webster.com/dictionary/%@", aWord]];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     return request;
 }
@@ -41,12 +39,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)viewDidUnload
@@ -98,26 +90,29 @@
 }
 
 #pragma mark - UISplitViewControllerDelegate
+
+/*
+ * Para que el UISPlitView funcione correctamente cuando se cambia la 
+ * orientación del dispositivo, es fundamental que el controlador de 
+ * la derecha, es decir, el DefinitionViewController sea su delegado 
+ * y que implemente los siguientes mensajes (tomado de The geek training)
+ */
 -(void) splitViewController:(UISplitViewController *)svc
      willHideViewController:(UIViewController *)aViewController
           withBarButtonItem:(UIBarButtonItem *)barButtonItem
-       forPopoverController:(UIPopoverController *)pc{
+       forPopoverController:(UIPopoverController *)pc
+{
     
-    // Lo que nos cuenta UISplitViewController es que ha quitado el controlador
-    // de la izquierda y lo ha metido en un PopOver que cuelga de un botón.
-    // Nos limitamos a guardar dicho botón en la barra del navigation dentro del
-    // cual estamos.
-    // Hemos pasado a vertical
+    // No hay controlador a la izquierda, se despliega pop-pup
     self.navigationItem.leftBarButtonItem = barButtonItem;
 }
 
 -(void) splitViewController:(UISplitViewController *)svc
      willShowViewController:(UIViewController *)aViewController
-  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem{
+  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
     
-    // Lo que nos cuenta ahora es que ha dejado de usar el botón de marras,
-    // así que lo único que tenemos que hacer es quitarlo de la barra.
-    // Hemos pasado a apaisado.
+    // Quitarlo de la barra
     self.navigationItem.leftBarButtonItem = nil;
     
 }

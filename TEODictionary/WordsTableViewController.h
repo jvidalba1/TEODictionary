@@ -10,24 +10,27 @@
 
 #import "TEOWordsModel.h"
 
-// Como vamos a usar el nombre de la variable antes de definirla,
-// tenemos que "adelantarle" al compilador que WordsTableViewController
-// es una clase.
+/*
+ * Para el uso del protocolo usamos el nombre de la clase
+ * antes de definirla, aqui nos adelantamos y le decimos al
+ * compilador que es una clase
+ */
 @class WordsTableViewController;
 
 // Protocolo de delegado de WordsTableViewController.
-// Simplemente informa a su delegado cual ha sido la palabra seleccionada
+// Informa a su delegado cual ha sido la palabra seleccionada.
+
 @protocol WordsTableViewControllerDelegate
+
 -(void) wordsTableViewController: (WordsTableViewController *) sender
                   didClickOnWord: (NSString *) aWord;
 @end
 
 @interface WordsTableViewController : UITableViewController
-// El modelo
-@property (strong) TEOWordsModel* wordsModel;
-// El delegado
-@property (weak) id<WordsTableViewControllerDelegate> delegate;
 
-// El inicializador. Se le pasa el modelo
+@property (strong) TEOWordsModel* wordsModel;
+@property (weak) id<WordsTableViewControllerDelegate> delegate; // Delegado
+
 -(id) initWithModel: (TEOWordsModel *) aModel;
+
 @end
