@@ -23,6 +23,10 @@
 		5CAF0C4B189B4E57002F46EA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CAF0C49189B4E57002F46EA /* InfoPlist.strings */; };
 		5CAF0C4D189B4E57002F46EA /* TEODictionaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF0C4C189B4E57002F46EA /* TEODictionaryTests.m */; };
 		5CAF0C5B189B4EA2002F46EA /* TEOWordsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF0C5A189B4EA2002F46EA /* TEOWordsModel.m */; };
+		5CAF0C5E189B4F64002F46EA /* WordsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF0C5D189B4F64002F46EA /* WordsTableViewController.m */; };
+		5CAF0C60189B51B8002F46EA /* vocabwords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5CAF0C5F189B51B8002F46EA /* vocabwords.txt */; };
+		5CAF0C69189B54AF002F46EA /* DefinitionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF0C67189B54AF002F46EA /* DefinitionViewController.m */; };
+		5CAF0C6A189B54AF002F46EA /* DefinitionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CAF0C68189B54AF002F46EA /* DefinitionViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +60,12 @@
 		5CAF0C4C189B4E57002F46EA /* TEODictionaryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TEODictionaryTests.m; sourceTree = "<group>"; };
 		5CAF0C59189B4EA2002F46EA /* TEOWordsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TEOWordsModel.h; sourceTree = "<group>"; };
 		5CAF0C5A189B4EA2002F46EA /* TEOWordsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TEOWordsModel.m; sourceTree = "<group>"; };
+		5CAF0C5C189B4F64002F46EA /* WordsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WordsTableViewController.h; sourceTree = "<group>"; };
+		5CAF0C5D189B4F64002F46EA /* WordsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WordsTableViewController.m; sourceTree = "<group>"; };
+		5CAF0C5F189B51B8002F46EA /* vocabwords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vocabwords.txt; sourceTree = "<group>"; };
+		5CAF0C66189B54AF002F46EA /* DefinitionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefinitionViewController.h; sourceTree = "<group>"; };
+		5CAF0C67189B54AF002F46EA /* DefinitionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefinitionViewController.m; sourceTree = "<group>"; };
+		5CAF0C68189B54AF002F46EA /* DefinitionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DefinitionViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +181,11 @@
 		5CAF0C57189B4E82002F46EA /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5CAF0C5C189B4F64002F46EA /* WordsTableViewController.h */,
+				5CAF0C5D189B4F64002F46EA /* WordsTableViewController.m */,
+				5CAF0C66189B54AF002F46EA /* DefinitionViewController.h */,
+				5CAF0C67189B54AF002F46EA /* DefinitionViewController.m */,
+				5CAF0C68189B54AF002F46EA /* DefinitionViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -178,6 +193,7 @@
 		5CAF0C58189B4E88002F46EA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5CAF0C5F189B51B8002F46EA /* vocabwords.txt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -259,6 +275,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CAF0C2E189B4E57002F46EA /* InfoPlist.strings in Resources */,
+				5CAF0C6A189B54AF002F46EA /* DefinitionViewController.xib in Resources */,
+				5CAF0C60189B51B8002F46EA /* vocabwords.txt in Resources */,
 				5CAF0C39189B4E57002F46EA /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,9 +297,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				5CAF0C30189B4E57002F46EA /* main.m in Sources */,
+				5CAF0C69189B54AF002F46EA /* DefinitionViewController.m in Sources */,
 				5CAF0C34189B4E57002F46EA /* TEOAppDelegate.m in Sources */,
 				5CAF0C5B189B4EA2002F46EA /* TEOWordsModel.m in Sources */,
 				5CAF0C37189B4E57002F46EA /* TEODictionary.xcdatamodeld in Sources */,
+				5CAF0C5E189B4F64002F46EA /* WordsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
