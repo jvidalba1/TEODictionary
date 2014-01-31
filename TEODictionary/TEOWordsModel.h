@@ -13,16 +13,13 @@
 
 @property (strong) NSDictionary *words;
 
-// Array de letras ordenandas alfabéticamente.
 -(NSArray *) letters;
-// Letra que está en la posición aLetterIndex
--(NSString *) letterAtIndex: (NSInteger) aLetterIndex;
-// Arrat de palabras que empiezan por una misma letra (la que está en la
-// posición anIndex
--(NSArray *) wordsAtIndex:(NSInteger) anIndex;
+-(NSString *) letterAtIndex: (NSInteger) aLetterIndex; // Letra que está en la posición aLetterIndex
+-(NSArray *) wordsAtIndex:(NSInteger) anIndex; // Array de palabras
 
 // Palabra que está en la posición aWordIndex dentro del array de palabras
 // que empiezan por una letra (la que está en la posición aLetterIndex)
--(NSString *) wordAtIndex:(NSInteger) aWordIndex inLetterAtIndex:(NSInteger) aLetterIndex;
+-(NSString *) wordAtIndex:(NSInteger) aWordIndex
+          inLetterAtIndex:(NSInteger) aLetterIndex;
 
 @end

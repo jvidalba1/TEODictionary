@@ -15,20 +15,22 @@
 
 #pragma mark -  Init
 -(id) init{
-    
     if (self = [super init]) {
-        
         // Recordad que para que tengamos una URL válida, tanto en el dispositivo
         // iOS como en el simulador, tenemos que pedirsela al Bundle.
         NSURL *urlToFile = [[NSBundle mainBundle] URLForResource:@"vocabwords"
                                                    withExtension:@"txt"];
         self.words = [NSDictionary dictionaryWithContentsOfURL:urlToFile];
-        
     }
     return self;
 }
 
-#pragma mark -
+/*
+ * Tomado de la guía del proyecto en la pagina de agbo
+ * Metodo para ordenar nuestro array
+ */
+
+#pragma mark - Metodos utiles
 -(NSArray *) letters{
     
     // words es un NSDictionary y nos devuelve un NSArray de claves (en nuestro caso
