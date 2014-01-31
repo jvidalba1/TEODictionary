@@ -18,7 +18,6 @@
 // Protocolo de delegado de WordsTableViewController.
 // Simplemente informa a su delegado cual ha sido la palabra seleccionada
 @protocol WordsTableViewControllerDelegate
-
 -(void) wordsTableViewController: (WordsTableViewController *) sender
                   didClickOnWord: (NSString *) aWord;
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "DefinitionViewController.h"
+#import "WordsTableViewController.h"
 
 @interface DefinitionViewController ()
 
@@ -70,95 +71,55 @@
     
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
+    // Return YES for supported orientations
+	return YES;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section
-{
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+#pragma mark - UIWebViewDelegate
+-(void) webViewDidFinishLoad:(UIWebView *)webView{
+    // La UIWebView ha terminado de cargar la definicón. ya podemos
+    // dejar de animar la UIActivityView
+    [self.activityView stopAnimating];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+#pragma mark - WordsTableViewControllerDelegate
+-(void) wordsTableViewController:(WordsTableViewController *)sender
+                  didClickOnWord:(NSString *)aWord{
     
-    // Configure the cell...
+    // WordsTableViewController nos informa que el usuario ha tocado sobr euna palabra.
+    // Lo que tenemos que hacer es cambiar nuestro modelo y actualizar la definición
+    self.wordModel = aWord;
+    self.title = self.wordModel;
     
-    return cell;
+    [self.activityView startAnimating];
+    [self.browser loadRequest:[self definitionRequestForWord:self.wordModel]];
 }
 
-
-
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Table view delegate
-
-// In a xib-based application, navigation from a table can be handled in -tableView:didSelectRowAtIndexPath:
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here, for example:
-    // Create the next view controller.
-    <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-
-    // Pass the selected object to the new view controller.
+#pragma mark - UISplitViewControllerDelegate
+-(void) splitViewController:(UISplitViewController *)svc
+     willHideViewController:(UIViewController *)aViewController
+          withBarButtonItem:(UIBarButtonItem *)barButtonItem
+       forPopoverController:(UIPopoverController *)pc{
     
-    // Push the view controller.
-    [self.navigationController pushViewController:detailViewController animated:YES];
+    // Lo que nos cuenta UISplitViewController es que ha quitado el controlador
+    // de la izquierda y lo ha metido en un PopOver que cuelga de un botón.
+    // Nos limitamos a guardar dicho botón en la barra del navigation dentro del
+    // cual estamos.
+    // Hemos pasado a vertical
+    self.navigationItem.leftBarButtonItem = barButtonItem;
 }
- 
- */
+
+-(void) splitViewController:(UISplitViewController *)svc
+     willShowViewController:(UIViewController *)aViewController
+  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem{
+    
+    // Lo que nos cuenta ahora es que ha dejado de usar el botón de marras,
+    // así que lo único que tenemos que hacer es quitarlo de la barra.
+    // Hemos pasado a apaisado.
+    self.navigationItem.leftBarButtonItem = nil;
+    
+}
 
 @end
