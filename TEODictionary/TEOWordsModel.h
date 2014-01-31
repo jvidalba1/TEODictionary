@@ -17,8 +17,6 @@
 -(NSString *) letterAtIndex: (NSInteger) aLetterIndex; // Letra que está en la posición aLetterIndex
 -(NSArray *) wordsAtIndex:(NSInteger) anIndex; // Array de palabras
 
-// Palabra que está en la posición aWordIndex dentro del array de palabras
-// que empiezan por una letra (la que está en la posición aLetterIndex)
 -(NSString *) wordAtIndex:(NSInteger) aWordIndex
           inLetterAtIndex:(NSInteger) aLetterIndex;
 

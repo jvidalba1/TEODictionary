@@ -18,6 +18,7 @@
     if (self = [super init]) {
         // Recordad que para que tengamos una URL válida, tanto en el dispositivo
         // iOS como en el simulador, tenemos que pedirsela al Bundle.
+	// Tomado de the geek training, project explanation
         NSURL *urlToFile = [[NSBundle mainBundle] URLForResource:@"vocabwords"
                                                    withExtension:@"txt"];
         self.words = [NSDictionary dictionaryWithContentsOfURL:urlToFile];
@@ -26,7 +27,8 @@
 }
 
 /*
- * Tomado de la guía del proyecto en la pagina de agbo
+ * De aquí para abajo fue tomado de la guía del proyecto 
+ * en la pagina de agbo
  * Metodo para ordenar nuestro array
  */
 
